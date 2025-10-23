@@ -1,0 +1,3 @@
+ val editor = getSharedPreferences("MyAppPrefs", MODE_PRIVATE).edit()
+                    editor.putString("FirstName", name)
+                    editor.apply()
