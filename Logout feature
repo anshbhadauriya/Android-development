@@ -1,0 +1,14 @@
+val logoutButton = findViewById<Button>(R.id.logoutButton)
+logoutButton.setOnClickListener {
+    // Sign out from Firebase
+    FirebaseAuth.getInstance().signOut()
+
+    // Clear local SharedPreferences (optional but recommended)
+    val sharedPref = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+    sharedPref.edit().clear().apply()
+
+    // Redirect to login screen
+    val intent = Intent(this, MainActivity::class.java)
+    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    startActivity(intent)
+}
